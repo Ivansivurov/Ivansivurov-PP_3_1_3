@@ -2,37 +2,54 @@ package com.example.springbootdem.dao;
 
 import com.example.springbootdem.model.User;
 import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Repository
 
+@Repository
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Override
-    public List<User> index() {
-        return entityManager.createQuery("FROM user", User.class).getResultList();
-    }
-
-    @Override
-    public void save(User user) { entityManager.persist(user); }
-
-    @Override
-    public User getUser(int id) {
+    public User getUserById(Integer id) {
         return entityManager.find(User.class, id);
     }
 
-    @Override
-    public void update(int id, User user) { entityManager.merge(user); }
+    public void save(User user) {
+        entityManager.persist(user);
+    }
 
-    @Override
-    public void delete(int id) {
+    public void update(User updatedUser) {
+        entityManager.merge(updatedUser);
+    }
+
+    public void delete(Integer id) {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
     }
 
+    @Override
+    public List<User> getDemandedUsers() {
+        List<User> list1 = entityManager.createQuery("select user from User user", User.class).getResultList();
+        return list1;
+    }
+
+    public User findByUsername(String usernameReq) {
+        User user = null;
+
+        try {
+            TypedQuery<User> query = entityManager.createQuery(
+                    "SELECT u FROM User u WHERE u.username = :userRequest", User.class);
+            user = query.setParameter("userRequest", usernameReq).getSingleResult();
+        } catch (javax.persistence.NoResultException e) {
+            System.out.printf("User '%s' not found%n", usernameReq);
+        } finally {
+            entityManager.close();
+        }
+        return user;
+    }
 }

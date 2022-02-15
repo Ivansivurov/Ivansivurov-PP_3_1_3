@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User</title>
+    <style>
+        .buttonLogout {
+            color: chocolate;
+        }
+    </style>
+</head>
+<body>
+<h1 th:utext="${user.username}">username</h1>
+<table  align="left" border="5" bgcolor="olive" width="300" height="75">
+    <tr>
+        <th th:width="50">UserId</th>
+        <th th:width="120">Username</th>
+    </tr>
+    <td th:utext="${user.id}">UserId</td>
+    <td th:utext="${user.username}">Username</td>
+</table>
+<br>
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Logout</button>
+</body>
+</html>

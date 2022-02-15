@@ -1,37 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Users</title>
+    <title>Spring Security Example</title>
 </head>
 <body>
-<div>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Surname</th>
-        </tr>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.getId()}">Id</td>>
-            <td th:text="${user.getFirstName()}">Name</td>
-            <td th:text="${user.getLastName()}">Surname</td>
-            <td>
-                <form th:action="@{/{id}/edit(id=${user.getId})}">
-                    <input type="submit" value="Edit user"/>
-                </form>
-            </td>
-            <td>
-                <form th:method="DELETE" th:action="@{/{id}/(id=${user.getId})}">
-                    <input type="submit" value="Delete user"/>
-                </form>
-            </td>
-        </tr>
-    </table>
-    <form th:method="GET" th:action="@{/new}">
-        <br/>
-        <input type="submit" value="Register a new user"/>
-    </form>
-</div>
+<h1>Welcome to Index PAGE!</h1>
+<hr/>
+<a th:href="@{/user}">Admins & Users only</a>
+<hr/>
+<a th:href="@{/admin}">Admins only</a>
+<hr/>
+
 </body>
 </html>

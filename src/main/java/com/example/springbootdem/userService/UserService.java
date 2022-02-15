@@ -1,11 +1,12 @@
-package com.example.springbootdem.dao;
+package com.example.springbootdem.userService;
 
 
 import com.example.springbootdem.model.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserService {
+
     void save(User user);
 
     void update(User updatedUser);
@@ -17,4 +18,8 @@ public interface UserDao {
     List<User> getDemandedUsers();
 
     User findByUsername(String username);
+
+    User setRolesToUser(User user, int[] rolesIdArr);
+
+    void setEncryptedPassword(User user);
 }
