@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .successHandler(successUserHandler)
-                .loginProcessingUrl("/hellologin")
+                .loginProcessingUrl("/login")
                 .and()
                 .logout().logoutSuccessUrl("/");
     }

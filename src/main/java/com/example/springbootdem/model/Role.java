@@ -23,10 +23,13 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        String roles;
+        if(id == 2) {
+            roles = "ADMIN";
+        } else {
+            roles = "USER";
+        }
+        return roles;
     }
 
     public Integer getId() {

@@ -36,9 +36,14 @@ public class InitialDataRunner implements CommandLineRunner {
         roleService.save(role1);
         roleService.save(role2);
         List<Role> u1roles = new ArrayList<>();
+        List<Role> u2roles = new ArrayList<>();
+        u1roles.add(role1);
         u1roles.add(role2);
-        User user1 = new User("admin", "admin", null, null, "admin", u1roles);
-        User user2 = new User("user", "user", null, null, "user", u1roles);
+        u2roles.add(role1);
+
+
+        User user1 = new User("admin", "admin", 15, "admin@gmail.com", "admin", u1roles);
+        User user2 = new User("user", "user", 47, "user@mail.ru", "user", u2roles);
 
         userService.save(user1);
         userService.save(user2);
