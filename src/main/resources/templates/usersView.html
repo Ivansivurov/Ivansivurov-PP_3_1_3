@@ -147,11 +147,11 @@
                                                                                 </div>
                                                                                 <div class="mb-3">
                                                                                     <label for="password1" class="form-label d-flex justify-content-center"><strong>Password</strong></label>
-                                                                                    <input type="password" th:value="*{password}" th:name="password" class="form-control" id="password1">
+                                                                                    <input type="password" th:value="*{password}" th:name="password" class="form-control" id="password1" required/>
                                                                                 </div>
                                                                                 <p class="form-label d-flex justify-content-center"><strong th:text="Role"></strong></p>
 
-                                                                                <select name="rolesIdArr" class="form-control form-control-sm" size="2">
+                                                                                <select multiple class="form-control form-control-sm" name="rolesIdArr"  size="2">
                                                                                     <th:block th:each="role : ${rolesList}">
                                                                                         <option  th:value="${role.getId() }" th:name="role"><label th:text="${role.toString()}"></label></option>
                                                                                     </th:block>

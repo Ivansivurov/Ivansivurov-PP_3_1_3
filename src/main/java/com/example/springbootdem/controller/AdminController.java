@@ -50,9 +50,6 @@ public class AdminController {
     @PostMapping("/admin/users")
     public String create(@ModelAttribute("user") User user,
                          @RequestParam(value = "rolesIdArr", required = false) int[] rolesIdArr) {
-        if (rolesIdArr[0] == 2){
-            rolesIdArr = new int[] {1, 2};
-        }
         User updatedUser = userService.setRolesToUser(user, rolesIdArr);
         userService.save(updatedUser);
 
@@ -62,9 +59,6 @@ public class AdminController {
     @PatchMapping("/admin/users/edit")
     public String update(@ModelAttribute("user") User user,
                          @RequestParam(value = "rolesIdArr", required = false) int[] rolesIdArr) {
-        if (rolesIdArr[0] == 2){
-            rolesIdArr = new int[] {1, 2};
-        }
         User updatedUser = userService.setRolesToUser(user, rolesIdArr);
         userService.update(updatedUser);
         return "redirect:/admin/users/";
